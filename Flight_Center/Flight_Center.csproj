@@ -43,8 +43,10 @@
   <ItemGroup>
     <Compile Include="Administrator.cs" />
     <Compile Include="AirlineCompanies.cs" />
+    <Compile Include="AnonymousUserFacade.cs" />
     <Compile Include="Countries.cs" />
     <Compile Include="Customers.cs" />
+    <Compile Include="FacadeBase.cs" />
     <Compile Include="Flights.cs" />
     <Compile Include="IAirlineDAO.cs" />
     <Compile Include="IAnonymousUserFacade.cs" />
