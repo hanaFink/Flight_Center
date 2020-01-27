@@ -47,6 +47,7 @@
     <Compile Include="Customers.cs" />
     <Compile Include="Flights.cs" />
     <Compile Include="IAirlineDAO.cs" />
+    <Compile Include="IAnonymousUserFacade.cs" />
     <Compile Include="IBasicDB.cs" />
     <Compile Include="ICountryDAO.cs" />
     <Compile Include="ICustomeDAO.cs" />

@@ -8,5 +8,6 @@ namespace Flight_Center
 {
     interface ICustomerDAO :IBasicDB<Customers>
     {
+        Customers GetCustomerByUsername(string name);
     }
 }

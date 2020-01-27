@@ -8,6 +8,7 @@ namespace Flight_Center
 {
     interface IAirlineDAO:IBasicDB<AirlineCompanies>
     {
-
+        AirlineCompanies GetAirlineCompaniesByUsername(string name);
+        IList<AirlineCompanies> GetAllAirlinesCompanyByCountry(int countryid);
     }
 }

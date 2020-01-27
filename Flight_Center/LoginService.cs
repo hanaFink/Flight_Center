@@ -9,23 +9,19 @@ namespace Flight_Center
     class LoginService : ILogicService
     {
         private IAirlineDAO _airlineDAO;
-        private ICustomer _customerADO;
+        private ICustomerDAO _customerADO;
 
-        public bool TryAdministratorLogin(string user_name, string password, out LoginToken<Administrator> token)
-        {
-            if (true)
-            {
-                token =  ;
-                return true;
-            }
-                    }
-
-        public bool TryAirlineLogin(string user_name, string password, out LoginToken<Customers> token)
+        public bool TryAdministratorLogin(string userName, string password, out LoginToken<Administrator> token)
         {
             throw new NotImplementedException();
         }
 
-        public bool TryCustomereLogin(string user_name, string password, out LoginToken<AirlineCompanies> token)
+            public bool TryAirlineLogin(string userName, string password, out LoginToken<Customers> token)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool TryCustomereLogin(string userName, string password, out LoginToken<AirlineCompanies> token)
         {
             throw new NotImplementedException();
         }
