@@ -4,16 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{02C98270-60A9-4637-AEFA-A4367FED5B40}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Flight_Center</RootNamespace>
-    <AssemblyName>Flight_Center</AssemblyName>
+    <ProjectGuid>{52021614-BC59-4451-97CF-4A2E031CE395}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SeeInAction</RootNamespace>
+    <AssemblyName>SeeInAction</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,7 +35,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,36 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AirlineDAOMSSQL.cs" />
-    <Compile Include="Flight_Center_Appconfig.cs" />
-    <Compile Include="POCO\Administrator.cs" />
-    <Compile Include="POCO\AirlineCompanie.cs" />
-    <Compile Include="AnonymousUserFacade.cs" />
-    <Compile Include="POCO\Countries.cs" />
-    <Compile Include="POCO\Customers.cs" />
-    <Compile Include="FacadeBase.cs" />
-    <Compile Include="POCO\Flights.cs" />
-    <Compile Include="IAirlineDAO.cs" />
-    <Compile Include="IAnonymousUserFacade.cs" />
-    <Compile Include="IBasicDB.cs" />
-    <Compile Include="ICountryDAO.cs" />
-    <Compile Include="ICustomeDAO.cs" />
-    <Compile Include="IFlightDAO.cs" />
-    <Compile Include="ILogicService.cs" />
-    <Compile Include="IPoco.cs" />
-    <Compile Include="ITicketDAO.cs" />
-    <Compile Include="IUser.cs" />
-    <Compile Include="LoginService.cs" />
-    <Compile Include="LoginToken.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TicketDaoMSSQL.cs" />
-    <Compile Include="POCO\Ticket.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\.editorconfig">
-      <Link>.editorconfig</Link>
-    </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Flight_Center\Flight_Center.csproj">
+      <Project>{02c98270-60a9-4637-aefa-a4367fed5b40}</Project>
+      <Name>Flight_Center</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

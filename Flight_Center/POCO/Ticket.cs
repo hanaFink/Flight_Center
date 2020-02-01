@@ -56,6 +56,9 @@ namespace Flight_Center
             return n = (int)this.ID;
         }
 
-
+        public override string ToString()
+        {
+            return $"id is{this.ID} flight id is{FLIGHT_ID } customer id is{CUSTOMER_ID} "  ;
+        }
     }
 }

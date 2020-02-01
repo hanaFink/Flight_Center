@@ -21,7 +21,7 @@ namespace Flight_Center
             throw new NotImplementedException();
         }
 
-        public bool TryCustomereLogin(string userName, string password, out LoginToken<AirlineCompanies> token)
+        public bool TryCustomereLogin(string userName, string password, out LoginToken<AirlineCompanie> token)
         {
             throw new NotImplementedException();
         }

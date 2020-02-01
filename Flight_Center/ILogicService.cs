@@ -11,7 +11,7 @@ namespace Flight_Center
         bool TryAdministratorLogin(string userName, string password, out LoginToken<Administrator> token);
         bool TryAirlineLogin(string userName, string password, out LoginToken<Customers> token);
 
-        bool TryCustomereLogin(string userName, string password, out LoginToken<AirlineCompanies> token);
+        bool TryCustomereLogin(string userName, string password, out LoginToken<AirlineCompanie> token);
 
 
 

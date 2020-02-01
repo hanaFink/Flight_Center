@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center
 {
-    public class AirlineCompanies: IPoco, IUser
+    public class AirlineCompanie: IPoco, IUser
     {
       
 
@@ -15,13 +15,13 @@ namespace Flight_Center
         public string USER_NAME { get; set; }
         public string PASSWORD { get; set; }
         public string COUNTRY_CODE { get; set; }
-        public AirlineCompanies()
+        public AirlineCompanie()
         {
 
         }
 
 
-        public AirlineCompanies(long iD, string aIRLINE_NAME, string uSER_NAME, string pASSWORD, string cOUNTRY_CODE)
+        public AirlineCompanie(long iD, string aIRLINE_NAME, string uSER_NAME, string pASSWORD, string cOUNTRY_CODE)
         {
             ID = iD;
             AIRLINE_NAME = aIRLINE_NAME;
@@ -30,7 +30,7 @@ namespace Flight_Center
             COUNTRY_CODE = cOUNTRY_CODE;
         }
 
-        public static bool operator == (AirlineCompanies first_member, AirlineCompanies second_member)
+        public static bool operator == (AirlineCompanie first_member, AirlineCompanie second_member)
         {
             if ((ReferenceEquals(first_member,null)) && ReferenceEquals(second_member,null))
             {
@@ -46,14 +46,14 @@ namespace Flight_Center
             }
             return false;
         }
-        public static bool operator != (AirlineCompanies first_member, AirlineCompanies second_member)
+        public static bool operator != (AirlineCompanie first_member, AirlineCompanie second_member)
         {
             return !(first_member == second_member);
         }
         public override bool Equals(object obj)
         {
 
-            AirlineCompanies second_member = obj as AirlineCompanies;
+            AirlineCompanie second_member = obj as AirlineCompanie;
             return this.ID == second_member.ID;
         }
         public override int GetHashCode()

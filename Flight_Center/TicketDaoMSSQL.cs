@@ -10,9 +10,18 @@ namespace Flight_Center
     public class TicketDaoMSSQL : ITicketDAO
     {
         string _path = Flight_Center_Appconfig.path;
-        public void Add(Ticket t)
+        public void Add(Ticket ticketToAdd)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(_path)) // Connection String
+            {
+                con.Open();
+
+                using (SqlCommand cmd = new SqlCommand($"INSERT INTO Tickets VALUES ({ticketToAdd.FLIGHT_ID},{ticketToAdd.CUSTOMER_ID})", con))
+                {
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
         }
 
         public Ticket Get(int id)
@@ -31,9 +40,9 @@ namespace Flight_Center
                         while (reader.Read())
                         {
 
-                            getTicket.ID = (int)reader["ID"];
-                            getTicket.FLIGHT_ID = (int)reader["FLIGHT_ID"];
-                            getTicket.CUSTOMER_ID = (int)reader["CUSTOMER_ID"];
+                            getTicket.ID =Convert.ToInt32(reader["ID"]);
+                            getTicket.FLIGHT_ID = Convert.ToInt32(reader["FLIGHT_ID"]);
+                            getTicket.CUSTOMER_ID = Convert.ToInt32(reader["CUSTOMER_ID"]);
                       
                         }
 
@@ -62,10 +71,13 @@ namespace Flight_Center
 
                             while (reader.Read())
                             {
-                                Ticket ticket = new Ticket
-                                { ID = (int)reader["ID"],
-                                  FLIGHT_ID = (int)reader["FLIGHT_ID"],
-                                  CUSTOMER_ID = (int)reader["CUSTOMER_ID"] };
+                            Ticket ticket = new Ticket
+
+                            {
+                                ID = Convert.ToInt32(reader["ID"]),
+                                FLIGHT_ID = Convert.ToInt32(reader["FLIGHT_ID"]),
+                                CUSTOMER_ID = Convert.ToInt32(reader["CUSTOMER_ID"])
+                            };
 
 
                              listOfTickets.Add(ticket);
@@ -85,9 +97,9 @@ namespace Flight_Center
             {
                 con.Open();
 
-                using (SqlCommand cmd = new SqlCommand($"DELETE FROM Ticket WHERE ID = {ticketToRemove.ID}", con))
+                using (SqlCommand cmd = new SqlCommand($"DELETE FROM Tickets WHERE ID = {ticketToRemove.ID}", con))
                 {
-
+                    cmd.ExecuteNonQuery();
 
                 }
             }
@@ -100,9 +112,9 @@ namespace Flight_Center
             {
                 con.Open();
 
-                using (SqlCommand cmd = new SqlCommand($"UPDATE Ticket  SET[FLIGHT_ID] = {ticketToUpdate.FLIGHT_ID},[CUSTOMER_ID] = {ticketToUpdate.CUSTOMER_ID}, WHERE ID = {ticketToUpdate.ID}", con))
+                using (SqlCommand cmd = new SqlCommand($"UPDATE Tickets  SET [FLIGHT_ID] = {ticketToUpdate.FLIGHT_ID},[CUSTOMER_ID] = {ticketToUpdate.CUSTOMER_ID} WHERE ID = {ticketToUpdate.ID}", con))
                 {
-
+                    cmd.ExecuteNonQuery();
 
                 }
             }

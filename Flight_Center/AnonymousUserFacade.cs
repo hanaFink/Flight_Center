@@ -8,7 +8,7 @@ namespace Flight_Center
 {
     class AnonymousUserFacade : FacadeBase, IAnonymousUserFacade
     {
-        public IList<AirlineCompanies> GetAllAirlineCompanies()
+        public IList<AirlineCompanie> GetAllAirlineCompanies()
         {
             throw new NotImplementedException();
         }
