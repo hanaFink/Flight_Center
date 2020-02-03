@@ -58,7 +58,7 @@ namespace Flight_Center
 
         public override string ToString()
         {
-            return $"id is{this.ID} flight id is{FLIGHT_ID } customer id is{CUSTOMER_ID} "  ;
+            return $"id is {this.ID} flight id is {FLIGHT_ID } customer id is {CUSTOMER_ID} "  ;
         }
     }
 }

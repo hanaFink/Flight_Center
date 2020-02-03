@@ -14,14 +14,14 @@ namespace Flight_Center
         public string AIRLINE_NAME { get; set; }
         public string USER_NAME { get; set; }
         public string PASSWORD { get; set; }
-        public string COUNTRY_CODE { get; set; }
+        public int COUNTRY_CODE { get; set; }
         public AirlineCompanie()
         {
 
         }
 
 
-        public AirlineCompanie(long iD, string aIRLINE_NAME, string uSER_NAME, string pASSWORD, string cOUNTRY_CODE)
+        public AirlineCompanie(long iD, string aIRLINE_NAME, string uSER_NAME, string pASSWORD, int cOUNTRY_CODE)
         {
             ID = iD;
             AIRLINE_NAME = aIRLINE_NAME;
@@ -60,6 +60,12 @@ namespace Flight_Center
         {
             int n;
             return n =(int)this.ID;
+        }
+
+        public override string ToString()
+        {
+            return $"ID = {ID} AIRLINE_NAME = {AIRLINE_NAME} USER_NAME = {USER_NAME} PASSWORD = {PASSWORD}  COUNTRY_CODE = { COUNTRY_CODE}";
+         
         }
     }
 }

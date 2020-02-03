@@ -43,11 +43,11 @@ namespace Flight_Center
                         while (reader.Read())
                         {
 
-                            getAirline.ID = (int)reader["ID"];
-                            getAirline.AIRLINE_NAME = (string)reader["AIRLINE_NAME"];
-                            getAirline.USER_NAME = (string)reader["USER_NAME"];
-                            getAirline.PASSWORD = (string)reader["PASSWORD"];
-                            getAirline.COUNTRY_CODE = (string)reader["COUNTRY_CODE"];
+                            getAirline.ID = Convert.ToInt32(reader["ID"]);
+                            getAirline.AIRLINE_NAME = Convert.ToString(reader["AIRLINE_NAME"]);
+                            getAirline.USER_NAME = Convert.ToString(reader["USER_NAME"]);
+                            getAirline.PASSWORD = Convert.ToString(reader["PASSWORD"]);
+                            getAirline.COUNTRY_CODE = Convert.ToInt32(reader["COUNTRY_CODE"]);
 
                         }
 
@@ -64,7 +64,7 @@ namespace Flight_Center
             {
                 con.Open();
 
-                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM AirlineCompanies WHERE AIRLINE_NAME = {name}", con))
+                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM AirlineCompanies WHERE USER_NAME LIKE '{name}' ", con))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -74,11 +74,11 @@ namespace Flight_Center
                         while (reader.Read())
                         {
 
-                            getAirline.ID = (int) reader["ID"];
-                            getAirline.AIRLINE_NAME = (string) reader["AIRLINE_NAME"];
-                            getAirline.USER_NAME = (string) reader["USER_NAME"];
-                            getAirline.PASSWORD =(string) reader["PASSWORD"];
-                            getAirline.COUNTRY_CODE = (string) reader["COUNTRY_CODE"];
+                            getAirline.ID = Convert.ToInt32(reader["ID"]);
+                            getAirline.AIRLINE_NAME = Convert.ToString(reader["AIRLINE_NAME"]);
+                            getAirline.USER_NAME = Convert.ToString(reader["USER_NAME"]);
+                            getAirline.PASSWORD = Convert.ToString(reader["PASSWORD"]);
+                            getAirline.COUNTRY_CODE  = Convert.ToInt32(reader["COUNTRY_CODE"]);
 
                          }
 
@@ -107,11 +107,11 @@ namespace Flight_Center
                         {
                             AirlineCompanie airlineCompanie = new AirlineCompanie
                             {
-                            ID = (int)reader["ID"],
-                            AIRLINE_NAME = (string)reader["AIRLINE_NAME"],
-                            USER_NAME = (string)reader["USER_NAME"],
-                            PASSWORD = (string)reader["PASSWORD"],
-                            COUNTRY_CODE = (string)reader["COUNTRY_CODE"]
+                            ID =Convert.ToInt32(reader["ID"]),
+                            AIRLINE_NAME =Convert.ToString(reader["AIRLINE_NAME"]),
+                            USER_NAME =Convert.ToString(reader["USER_NAME"]),
+                            PASSWORD = Convert.ToString( reader["PASSWORD"]),
+                            COUNTRY_CODE = Convert.ToInt32(reader["COUNTRY_CODE"])
 
                         };
 
@@ -132,17 +132,75 @@ namespace Flight_Center
 
                     public IList<AirlineCompanie> GetAllAirlinesCompanyByCountry(int countryid)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(_path)) // Connection String
+            {
+                con.Open();
+
+                IList<AirlineCompanie> listOfCompanies = new List<AirlineCompanie>();// create list of Airline Companies
+
+                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM AirlineCompanies WHERE COUNTRY_CODE = {countryid}", con))
+                {
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+                        while (reader.Read())
+                        {
+                            AirlineCompanie airlineCompanie = new AirlineCompanie
+                            {
+                                ID = Convert.ToInt32(reader["ID"]),
+                                AIRLINE_NAME = Convert.ToString(reader["AIRLINE_NAME"]),
+                                USER_NAME = Convert.ToString(reader["USER_NAME"]),
+                                PASSWORD = Convert.ToString(reader["PASSWORD"]),
+                                COUNTRY_CODE = Convert.ToInt32(reader["COUNTRY_CODE"])
+
+                            };
+
+
+                            listOfCompanies.Add(airlineCompanie);
+                        }
+
+
+                    }
+
+                }
+                return listOfCompanies;
+            }
         }
 
-        public void Remove(AirlineCompanie t)
+        public void Remove(AirlineCompanie t) // using cascade
         {
-            throw new NotImplementedException();
-        }
+
+               using (SqlConnection con = new SqlConnection(_path)) // Connection String
+                {
+                    con.Open();
+
+                    using (SqlCommand cmd = new SqlCommand($"DELETE FROM AirlineCompanies WHERE ID = {t.ID}", con))
+                    {
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+
+
+    }
 
         public void Update(AirlineCompanie t)
         {
-            throw new NotImplementedException();
+            
+
+                using (SqlConnection con = new SqlConnection(_path)) // Connection String
+                {
+                    con.Open();
+
+                    using (SqlCommand cmd = new SqlCommand($"UPDATE AirlineCompanies SET [AIRLINE_NAME] = {t.AIRLINE_NAME},[USER_NAME] = {t.USER_NAME} WHERE ID = {t.ID}", con))
+                    {
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+
+            
         }
     }
 }
