@@ -14,5 +14,15 @@ namespace Flight_Center
         protected IFlightDAO _flightDAO;
         protected ITicketDAO _ticketDAO;
 
+        public FacadeBase()
+        {
+            _airlineDao = new AirlineDAOMSSQL();
+            _countryDao = new CountryDAOMSSQL();
+            _customerDAO = new CustomerDAOMSSQL();
+            _flightDAO = new FlightDAOMSSQL();
+            _ticketDAO = new TicketDaoMSSQL();
+    }
+
+
     }
 }

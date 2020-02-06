@@ -12,12 +12,12 @@ namespace Flight_Center
     /// generic interface for all basic sql functions that fits all tables
     /// </summary>
    
-    interface IBasicDB <T>
+    public interface IBasicDB <T> where T :IPoco
    
     {
         void Add(T t);
         T Get(int id);
-    IList<T> GetAll();
+        IList<T> GetAll();
         void Remove(T t);
         void Update(T t);
     }

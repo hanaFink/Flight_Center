@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center
 {
-    class Countries : IPoco, IUser
+    public class Countries : IPoco, IUser
     {
 
        

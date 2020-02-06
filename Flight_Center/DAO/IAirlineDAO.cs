@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center
 {
-    interface IAirlineDAO:IBasicDB<AirlineCompanie>
+    public interface IAirlineDAO:IBasicDB<AirlineCompanie>
     {
         AirlineCompanie GetAirlineCompaniesByUsername(string name);
         IList<AirlineCompanie> GetAllAirlinesCompanyByCountry(int countryid);

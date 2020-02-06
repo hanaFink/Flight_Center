@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center
 {
-    class Customers : IPoco, IUser
+    public class Customers : IPoco, IUser
     {
        
 
@@ -17,13 +17,13 @@ namespace Flight_Center
         public string USER_NAME { get; set; }
         public string PASSWORD { get; set; }
         public string ADDRESS { get; set; }
-        public string PHONE_ID { get; set; }
+        public string PHONE_NO { get; set; }
         public string CREDIT_CARD_NUMBER { get; set; }
 
         public Customers()
         { 
         }
-        public Customers(long iD, string fIRST_NAME, string lAST_NAME, string uSER_NAME, string pASSWORD, string aDDRESS, string pHONE_ID, string cREDIT_CARD_NUMBER)
+        public Customers(long iD, string fIRST_NAME, string lAST_NAME, string uSER_NAME, string pASSWORD, string aDDRESS, string pHONE_NO, string cREDIT_CARD_NUMBER)
         {
             ID = iD;
             FIRST_NAME = fIRST_NAME;
@@ -31,7 +31,7 @@ namespace Flight_Center
             USER_NAME = uSER_NAME;
             PASSWORD = pASSWORD;
             ADDRESS = aDDRESS;
-            PHONE_ID = pHONE_ID;
+            PHONE_NO = pHONE_NO;
             CREDIT_CARD_NUMBER = cREDIT_CARD_NUMBER;
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center
 {
-    interface IPoco
+    public interface IPoco
     {
     }
 }

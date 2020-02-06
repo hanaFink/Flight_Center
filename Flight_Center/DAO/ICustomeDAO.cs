@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Flight_Center
 {
-    interface ICountryDAO:IBasicDB<Countries>
+    public interface ICustomerDAO :IBasicDB<Customers>
     {
+        Customers GetCustomerByUsername(string name);
     }
 }

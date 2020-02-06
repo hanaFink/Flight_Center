@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center
 {
-    class AnonymousUserFacade : FacadeBase, IAnonymousUserFacade
+    class AnonymousUserFacade : FacadeBase, IAnonymousUserFacade//here we will check all errors
     {
         public IList<AirlineCompanie> GetAllAirlineCompanies()
         {
@@ -25,7 +25,7 @@ namespace Flight_Center
 
         public Flights GetFlightById(int id)
         {
-            throw new NotImplementedException();
+            return _flightDAO.GetFlightsById(id);
         }
 
         public IList<Flights> GetFlightsByDepartureDate(DateTime departureDate)

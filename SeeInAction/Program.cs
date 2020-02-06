@@ -56,7 +56,7 @@ namespace SeeInAction
             AirlineCompanie company3 = new AirlineCompanie()
 
             {
-                ID = 24,
+          
                 AIRLINE_NAME = "'Air New'",
                 USER_NAME = "'Air New'",
                 PASSWORD = "'9876543'",

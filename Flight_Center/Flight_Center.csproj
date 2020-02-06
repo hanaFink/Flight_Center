@@ -42,7 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AirlineDAOMSSQL.cs" />
+    <Compile Include="DAO\AirlineDAOMSSQL.cs" />
+    <Compile Include="DAO\CountryDAOMSSQL.cs" />
+    <Compile Include="DAO\CustomerDAOMSSQL.cs" />
+    <Compile Include="DAO\FlightDAOMSSQL.cs" />
     <Compile Include="Flight_Center_Appconfig.cs" />
     <Compile Include="POCO\Administrator.cs" />
     <Compile Include="POCO\AirlineCompanie.cs" />
@@ -51,20 +54,20 @@
     <Compile Include="POCO\Customers.cs" />
     <Compile Include="FacadeBase.cs" />
     <Compile Include="POCO\Flights.cs" />
-    <Compile Include="IAirlineDAO.cs" />
+    <Compile Include="DAO\IAirlineDAO.cs" />
     <Compile Include="IAnonymousUserFacade.cs" />
-    <Compile Include="IBasicDB.cs" />
-    <Compile Include="ICountryDAO.cs" />
-    <Compile Include="ICustomeDAO.cs" />
-    <Compile Include="IFlightDAO.cs" />
+    <Compile Include="DAO\IBasicDB.cs" />
+    <Compile Include="DAO\ICountryDAO.cs" />
+    <Compile Include="DAO\ICustomeDAO.cs" />
+    <Compile Include="DAO\IFlightDAO.cs" />
     <Compile Include="ILogicService.cs" />
-    <Compile Include="IPoco.cs" />
-    <Compile Include="ITicketDAO.cs" />
+    <Compile Include="POCO\IPoco.cs" />
+    <Compile Include="DAO\ITicketDAO.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="LoginService.cs" />
     <Compile Include="LoginToken.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TicketDaoMSSQL.cs" />
+    <Compile Include="DAO\TicketDaoMSSQL.cs" />
     <Compile Include="POCO\Ticket.cs" />
   </ItemGroup>
   <ItemGroup>
