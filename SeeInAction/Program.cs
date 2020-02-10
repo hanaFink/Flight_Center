@@ -64,9 +64,12 @@ namespace SeeInAction
             };
 
            // airlineDAOMSSQL.Add(company3);
-            Console.WriteLine(airlineDAOMSSQL.Get(26));
-           
+            Console.WriteLine(airlineDAOMSSQL.Get(20));
 
+
+            Flight flight1 = new Flight();
+            FlightDAOMSSQL dao = new FlightDAOMSSQL();
+            Console.WriteLine(dao.Get(4));
         }
     }
 }

@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Flight_Center
 {
-    public interface IFlightDAO:IBasicDB<Flights>
+    public interface IFlightDAO:IBasicDB<Flight>
     {
-        Dictionary<Flights, int> GetAllFlithtsVacancy();
-        Flights GetFlightsById(int id);
-        IList<Flights> GetFlightsByOriginCountry(int countryCode);
-        IList<Flights> GetFlightsByDistinationCountry(int countryCode);
+        Dictionary<Flight, int> GetAllFlithtsVacancy();
+        Flight GetFlightsById(int id);
+        IList<Flight> GetFlightsByOriginCountry(int countryCode);
+        IList<Flight> GetFlightsByDistinationCountry(int countryCode);
 
-        IList<Flights> GetFlightsByDepatrureDate(DateTime depatrureDate);
-        IList<Flights> GetFlightsByLandingDate (DateTime landingDate);
-        IList<Flights> GetFlightsByCustomer(Customers customer);
+        IList<Flight> GetFlightsByDepatrureDate(DateTime depatrureDate);
+        IList<Flight> GetFlightsByLandingDate (DateTime landingDate);
+        IList<Flight> GetFlightsByCustomer(Customers customer);
 
     }
 }
