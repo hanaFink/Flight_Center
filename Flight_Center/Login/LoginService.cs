@@ -13,10 +13,12 @@ namespace Flight_Center
 
         public bool TryAdministratorLogin(string userName, string password, out LoginToken<Administrator> token)
         {
-            throw new NotImplementedException();
+            if (userName == "admin" & password == "9999")
+                return true;
+            throw new 
         }
 
-            public bool TryAirlineLogin(string userName, string password, out LoginToken<Customers> token)
+            public bool TryAirlineLogin(string userName, string password, out LoginToken<Customer> token)
         {
             throw new NotImplementedException();
         }

@@ -145,7 +145,7 @@ namespace Flight_Center
             }
         }
 
-        public IList<Flight> GetFlightsByCustomer(Customers customer)
+        public IList<Flight> GetFlightsByCustomer(Customer customer)
         {
 
             using (SqlConnection con = new SqlConnection(_path)) // Connection String

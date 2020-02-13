@@ -15,7 +15,7 @@ namespace Flight_Center
 
         IList<Flight> GetFlightsByDepatrureDate(DateTime depatrureDate);
         IList<Flight> GetFlightsByLandingDate (DateTime landingDate);
-        IList<Flight> GetFlightsByCustomer(Customers customer);
+        IList<Flight> GetFlightsByCustomer(Customer customer);
 
     }
 }

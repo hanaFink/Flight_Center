@@ -10,42 +10,43 @@ namespace Flight_Center
     {
         public IList<AirlineCompanie> GetAllAirlineCompanies()
         {
-            throw new NotImplementedException();
+           return _airlineDao.GetAll();
         }
 
         public IList<Flight> GetAllFlights()
         {
-            throw new NotImplementedException();
+            return _flightDAO.GetAll();
         }
 
         public Dictionary<Flight, int> GetAllFlightsVacancy()
         {
-            throw new NotImplementedException();
+            return _flightDAO.GetAllFlithtsVacancy();
         }
 
         public Flight GetFlightById(int id)
         {
+           
             return _flightDAO.GetFlightsById(id);
         }
 
         public IList<Flight> GetFlightsByDepartureDate(DateTime departureDate)
         {
-            throw new NotImplementedException();
+            return _flightDAO.GetFlightsByDepatrureDate(departureDate);
         }
 
         public IList<Flight> GetFlightsByDestinationCountry(int countryCode)
         {
-            throw new NotImplementedException();
+            return _flightDAO.GetFlightsByDistinationCountry(countryCode);
         }
 
         public IList<Flight> GetFlightsByLandingDate(DateTime landingDate)
         {
-            throw new NotImplementedException();
+            return _flightDAO.GetFlightsByLandingDate(landingDate);
         }
 
         public IList<Flight> GetFlightsByOriginCountry(int countryCode)
         {
-            throw new NotImplementedException();
+            return _flightDAO.GetFlightsByOriginCountry(countryCode);
         }
     }
 

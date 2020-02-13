@@ -11,7 +11,7 @@ namespace Flight_Center
     {
         string _path = Flight_Center_Appconfig.path;
         
-        public void Add(Customers customerToAdd)
+        public void Add(Customer customerToAdd)
         {
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {
@@ -25,7 +25,7 @@ namespace Flight_Center
             }
         }
 
-        public Customers Get(int id)
+        public Customer Get(int id)
         {
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {
@@ -36,7 +36,7 @@ namespace Flight_Center
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        Customers getCustomer = new Customers();
+                        Customer getCustomer = new Customer();
 
                         while (reader.Read())
                         {
@@ -60,7 +60,7 @@ namespace Flight_Center
             }
         }
 
-        public IList<Customers> GetAll()
+        public IList<Customer> GetAll()
         {
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {
@@ -68,11 +68,11 @@ namespace Flight_Center
 
                 using (SqlCommand cmd = new SqlCommand($"SELECT * FROM Customers ", con))
                 {
-                    IList<Customers> listOfcustimers = new List<Customers>();
+                    IList<Customer> listOfcustimers = new List<Customer>();
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        Customers getCustomer = new Customers();
+                        Customer getCustomer = new Customer();
 
                         while (reader.Read())
                         {
@@ -97,7 +97,7 @@ namespace Flight_Center
             }
         }
 
-        public Customers GetCustomerByUsername(string name)
+        public Customer GetCustomerByUsername(string name)
         {
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {
@@ -108,7 +108,7 @@ namespace Flight_Center
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        Customers getCustomer = new Customers();
+                        Customer getCustomer = new Customer();
 
                         while (reader.Read())
                         {
@@ -132,7 +132,7 @@ namespace Flight_Center
             }
         }
 
-        public void Remove(Customers customerToRemove)
+        public void Remove(Customer customerToRemove)
         {
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {
@@ -146,7 +146,7 @@ namespace Flight_Center
             }
         }
 
-        public void Update(Customers customerToUpdate)
+        public void Update(Customer customerToUpdate)
         {
 
             using (SqlConnection con = new SqlConnection(_path)) // Connection String

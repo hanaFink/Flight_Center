@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center
 {
-    public class Customers : IPoco, IUser
+    public class Customer : IPoco, IUser
     {
        
 
@@ -20,10 +20,10 @@ namespace Flight_Center
         public string PHONE_NO { get; set; }
         public string CREDIT_CARD_NUMBER { get; set; }
 
-        public Customers()
+        public Customer()
         { 
         }
-        public Customers(long iD, string fIRST_NAME, string lAST_NAME, string uSER_NAME, string pASSWORD, string aDDRESS, string pHONE_NO, string cREDIT_CARD_NUMBER)
+        public Customer(long iD, string fIRST_NAME, string lAST_NAME, string uSER_NAME, string pASSWORD, string aDDRESS, string pHONE_NO, string cREDIT_CARD_NUMBER)
         {
             ID = iD;
             FIRST_NAME = fIRST_NAME;
@@ -35,7 +35,7 @@ namespace Flight_Center
             CREDIT_CARD_NUMBER = cREDIT_CARD_NUMBER;
         }
 
-        public static bool operator ==(Customers first_member, Customers second_member)
+        public static bool operator ==(Customer first_member, Customer second_member)
         {
             if ((ReferenceEquals(first_member, null)) && ReferenceEquals(second_member, null))
             {
@@ -51,14 +51,14 @@ namespace Flight_Center
             }
             return false;
         }
-        public static bool operator !=(Customers first_member, Customers second_member)
+        public static bool operator !=(Customer first_member, Customer second_member)
         {
             return !(first_member == second_member);
         }
         public override bool Equals(object obj)
         {
 
-            Customers second_member = obj as Customers;
+            Customer second_member = obj as Customer;
             return this.ID == second_member.ID;
         }
         public override int GetHashCode()
