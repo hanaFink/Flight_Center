@@ -9,9 +9,9 @@ namespace Flight_Center
     interface ILogicService
     {
         bool TryAdministratorLogin(string userName, string password, out LoginToken<Administrator> token);
-        bool TryAirlineLogin(string userName, string password, out LoginToken<Customer> token);
+        bool TryAirlineLogin(string userName, string password, out LoginToken<AirlineCompanie> token);
 
-        bool TryCustomereLogin(string userName, string password, out LoginToken<AirlineCompanie> token);
+        bool TryCustomereLogin(string userName, string password, out LoginToken<Customer> token);
 
 
 
