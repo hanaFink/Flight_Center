@@ -370,13 +370,17 @@ namespace Flight_Center
 
         public void Remove(Flight flightToRemove)
         {
+
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {
-                con.Open();
 
-                using (SqlCommand cmd = new SqlCommand($"DELETE FROM Flights WHERE ID = {flightToRemove.ID}", con))
+                Flight getFlight = new Flight();
+                con.Open();
+           
+
+                            using (SqlCommand cmd1 = new SqlCommand($"DELETE FROM Flights WHERE ID = {getFlight.ID}", con))
                 {
-                    cmd.ExecuteNonQuery();
+                    cmd1.ExecuteNonQuery();
 
                 }
             }
@@ -396,7 +400,7 @@ namespace Flight_Center
                 }
             }
         }
-
+ 
        
     }
 }

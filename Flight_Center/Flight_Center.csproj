@@ -52,6 +52,7 @@
     <Compile Include="Facade\LoggedAirlineFacade.cs" />
     <Compile Include="Facade\LoggedInAdministratorFacade.cs" />
     <Compile Include="Facade\LoggedInCustomerFacade.cs" />
+    <Compile Include="Facade\NotYourFlightException.cs" />
     <Compile Include="Flight_Center_Appconfig.cs" />
     <Compile Include="Login\WrongPasswors.cs" />
     <Compile Include="POCO\Administrator.cs" />

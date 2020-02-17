@@ -130,7 +130,7 @@ namespace Flight_Center
 
 
 
-                    public IList<AirlineCompanie> GetAllAirlinesCompanyByCountry(int countryid)
+        public IList<AirlineCompanie> GetAllAirlinesCompanyByCountry(int countryid)
         {
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {
@@ -193,7 +193,7 @@ namespace Flight_Center
                 {
                     con.Open();
 
-                    using (SqlCommand cmd = new SqlCommand($"UPDATE AirlineCompanies SET [AIRLINE_NAME] = {t.AIRLINE_NAME},[USER_NAME] = {t.USER_NAME} WHERE ID = {t.ID}", con))
+                    using (SqlCommand cmd = new SqlCommand($"UPDATE AirlineCompanies SET [AIRLINE_NAME] = {t.AIRLINE_NAME},[PASSWORD] = {t.PASSWORD},[COUNTRY_CODE] = {t.COUNTRY_CODE} WHERE ID = {t.ID}", con))
                     {
                         cmd.ExecuteNonQuery();
 
