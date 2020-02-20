@@ -46,25 +46,51 @@ namespace Flight_Center.Facade
             }
         }
 
-        public IList<Flight> GetAllFlights(LoginToken<AirlineCompanie> token)
-        {
-            throw new NotImplementedException();
-        }
+
 
         public IList<Ticket> GetAllTickets(LoginToken<AirlineCompanie> token)
         {
 
-            throw new NotImplementedException();
+            return _ticketDAO.GetAllTicketsByAirlineId(token.User.ID);
         }
 
         public void ModifyAirlineDetails(LoginToken<AirlineCompanie> token, AirlineCompanie airline)
         {
-            throw new NotImplementedException();
+            if (token.User.ID == airline.ID)
+            {
+                _airlineDao.Update(airline);
+            }
+            else
+            {
+                throw new NotValidIdExeption(token, airline);
+            }
         }
 
         public void UpdateFlight(LoginToken<AirlineCompanie> token, Flight flight)
         {
-            throw new NotImplementedException();
+            if (token.User.ID == flight.AIRLINECOMPANY_ID)
+            {
+                _flightDAO.Update(flight);
+            }
+            else
+            {
+                throw new NotYourFlightException(token);
+            }
+        }
+
+        public IList<Flight> GetAllFlights(LoginToken<AirlineCompanie> token)
+        {
+
+            IList<Flight> list =  _flightDAO.GetFlightsByAirlineId(token.User.ID);
+
+            if (list != null)
+            {
+                return list;
+            }
+            else
+            {
+                throw new NotFlightException(token);
+            }
         }
     }
 }

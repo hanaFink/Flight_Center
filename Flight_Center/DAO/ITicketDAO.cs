@@ -8,5 +8,6 @@ namespace Flight_Center
 {
     public interface ITicketDAO:IBasicDB<Ticket>
     {
+        IList<Ticket> GetAllTicketsByAirlineId(Int64 airlineId);
     }
 }

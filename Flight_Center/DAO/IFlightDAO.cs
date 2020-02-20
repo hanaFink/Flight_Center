@@ -9,13 +9,14 @@ namespace Flight_Center
     public interface IFlightDAO:IBasicDB<Flight>
     {
         Dictionary<Flight, int> GetAllFlithtsVacancy();
-        Flight GetFlightsById(int id);
+        Flight Get(int id);
         IList<Flight> GetFlightsByOriginCountry(int countryCode);
         IList<Flight> GetFlightsByDistinationCountry(int countryCode);
 
         IList<Flight> GetFlightsByDepatrureDate(DateTime depatrureDate);
         IList<Flight> GetFlightsByLandingDate (DateTime landingDate);
         IList<Flight> GetFlightsByCustomer(Customer customer);
+        IList<Flight> GetFlightsByAirlineId(Int64 id);
 
     }
 }

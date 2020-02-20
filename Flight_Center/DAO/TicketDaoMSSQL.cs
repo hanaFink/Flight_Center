@@ -120,6 +120,49 @@ namespace Flight_Center
             }
 
         }
-    
+        /// <summary>
+        /// get all tickets that have customer
+        /// </summary>
+        /// <param name="airlineId">specific airlinecompany </param>
+        /// <returns></returns>
+        public IList<Ticket> GetAllTicketsByAirlineId(Int64 airlineId)
+        {
+            using (SqlConnection con = new SqlConnection(_path)) // Connection String
+            {
+                con.Open();
+
+                IList<Ticket> listOfTickets = new List<Ticket>();// create list of tickets
+
+
+
+                using (SqlCommand cmd = new SqlCommand($"SELECT T.* FROM Tickets T JOIN  Flights F ON F.ID = T.FLIGHT_ID WHERE F.AIRLINECOMPANY_ID = {airlineId}", con))
+                {
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+
+
+                        while (reader.Read())
+                        {
+                            Ticket ticket = new Ticket
+
+                            {
+                                ID = Convert.ToInt32(reader["ID"]),
+                                FLIGHT_ID = Convert.ToInt32(reader["FLIGHT_ID"]),
+                                CUSTOMER_ID = Convert.ToInt32(reader["CUSTOMER_ID"])
+                            };
+
+
+                            listOfTickets.Add(ticket);
+                        }
+
+
+                    }
+
+                }
+                return listOfTickets;
+            }
+        }
+
     }
 }

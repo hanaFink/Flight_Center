@@ -258,13 +258,15 @@ namespace Flight_Center
             }
         }
 
-        public Flight GetFlightsById(int id)
+        public IList <Flight> GetFlightsByAirlineId(Int64 aircompanyid)
         {
 
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {
+                IList<Flight> listOfFlights = new List<Flight>();
+
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM Flights WHERE ID = {id}", con))
+                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM Flights WHERE AIRLINECOMPANY_ID = {aircompanyid}", con))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -286,10 +288,10 @@ namespace Flight_Center
 
 
                         }
-                        return getFlight;
+                        listOfFlights.Add(getFlight);
                     }
                 }
-
+                return listOfFlights;
 
             }
         }
