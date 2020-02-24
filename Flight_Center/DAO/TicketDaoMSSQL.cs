@@ -121,7 +121,7 @@ namespace Flight_Center
 
         }
         /// <summary>
-        /// get all tickets that have customer
+        /// get all tickets that airline have
         /// </summary>
         /// <param name="airlineId">specific airlinecompany </param>
         /// <returns></returns>

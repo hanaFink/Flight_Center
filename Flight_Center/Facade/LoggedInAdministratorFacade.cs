@@ -10,32 +10,34 @@ namespace Flight_Center.Facade
     {
         public void CreateNewAirline(LoginToken<Administrator> token, AirlineCompanie airline)
         {
-            throw new NotImplementedException();
+            _airlineDao.Add(airline);
         }
 
         public void CreateNewCustomer(LoginToken<Administrator> token, Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDAO.Add(customer);
         }
 
         public void RemoveAirline(LoginToken<Administrator> token, AirlineCompanie airline)
         {
-            throw new NotImplementedException();
+            _airlineDao.Remove(airline);
         }
 
         public void RemoveCustomer(LoginToken<Administrator> token, Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDAO.Remove(customer);
         }
 
-        public void UpdateAirlineDetails(LoginToken<Administrator> token, AirlineCompanie customer)
+        public void UpdateAirlineDetails(LoginToken<Administrator> token, AirlineCompanie airline)
         {
-            throw new NotImplementedException();
+            _airlineDao.Update(airline);
         }
 
         public void UpdateCustomerDetails(LoginToken<Administrator> token, Customer customer)
         {
-            throw new NotImplementedException();
+            _customerDAO.Update(customer);
         }
     }
 }
+
+   

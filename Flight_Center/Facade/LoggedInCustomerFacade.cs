@@ -1,46 +1,53 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Flight_Center.Facade
 {
-    class LoggedInCustomerFacade : AnonymousUserFacade, ILoggedAirlineFacade
+    class LoggedInCustomerFacade : AnonymousUserFacade, ILoggedInCustomerFacade
     {
-        public void CancelFlight(LoginToken<AirlineCompanie> token, Flight flight)
+        public void CancelTicket(LoginToken<Customer> token, Ticket ticket)
+        {
+            if (token.User.ID == ticket.CUSTOMER_ID)
+            {
+                Flight f = _flightDAO.Get(ticket.FLIGHT_ID);
+                _ticketDAO.Remove(ticket);
+                f.REMAINING_TICKETS++;
+                _flightDAO.Update(f);
+            }
+            else
+            {
+                throw new NotCustomerFlightExeption(ticket);
+            }
+        }
+
+        public IList<Flight> GetAllMyFlights(LoginToken<Customer> token)
         {
             throw new NotImplementedException();
         }
 
-        public void ChangeMyPassword(LoginToken<AirlineCompanie> token, string oldPassword, string newPassword)
+        public Ticket PerchaseTicket(LoginToken<Customer> token, Flight flight)
         {
-            throw new NotImplementedException();
-        }
 
-        public void CreateFlight(LoginToken<AirlineCompanie> token, Flight flight)
-        {
-            throw new NotImplementedException();
-        }
+            if (flight.REMAINING_TICKETS > 0)
+            {
+                flight.REMAINING_TICKETS--;
+                Ticket newTicket = new Ticket { CUSTOMER_ID = (int)token.User.ID, FLIGHT_ID = (int)flight.ID };
+                 _ticketDAO.Add(newTicket);
+                return newTicket;
+            }
+            else
+            {
+                throw new FlightDoNotHaveVacancyTicketsExeption(flight);
+            }
 
-        public IList<Ticket> GetAllFlights(LoginToken<AirlineCompanie> token)
-        {
-            throw new NotImplementedException();
-        }
 
-        public IList<Ticket> GetAllTickets(LoginToken<AirlineCompanie> token)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ModifyAirlineDetails(LoginToken<AirlineCompanie> token, AirlineCompanie airline)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateFlight(LoginToken<AirlineCompanie> token, Flight flight)
-        {
-            throw new NotImplementedException();
         }
     }
+
+    }
 }
+      

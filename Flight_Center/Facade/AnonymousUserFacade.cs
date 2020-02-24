@@ -26,7 +26,7 @@ namespace Flight_Center
         public Flight GetFlightById(int id)
         {
            
-            return _flightDAO.GetFlightsById(id);
+            return _flightDAO.Get(id);
         }
 
         public IList<Flight> GetFlightsByDepartureDate(DateTime departureDate)

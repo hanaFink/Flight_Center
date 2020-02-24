@@ -46,12 +46,14 @@
     <Compile Include="DAO\CountryDAOMSSQL.cs" />
     <Compile Include="DAO\CustomerDAOMSSQL.cs" />
     <Compile Include="DAO\FlightDAOMSSQL.cs" />
+    <Compile Include="Facade\FlightDoNotHaveVacancyTicketsExeption.cs" />
     <Compile Include="Facade\ILoggedAirlineFacade.cs" />
     <Compile Include="Facade\ILoggedInAdministratorFacade.cs" />
     <Compile Include="Facade\ILoggedInCustomerFacade.cs" />
     <Compile Include="Facade\LoggedAirlineFacade.cs" />
     <Compile Include="Facade\LoggedInAdministratorFacade.cs" />
     <Compile Include="Facade\LoggedInCustomerFacade.cs" />
+    <Compile Include="Facade\NotCustomerFlightExeption.cs" />
     <Compile Include="Facade\NotFlightException.cs" />
     <Compile Include="Facade\NotValidIdExeption.cs" />
     <Compile Include="Facade\NotYourFlightException.cs" />
