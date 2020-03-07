@@ -17,6 +17,11 @@ namespace Flight_Center
         IList<Flight> GetFlightsByLandingDate (DateTime landingDate);
         IList<Flight> GetFlightsByCustomer(Customer customer);
         IList<Flight> GetFlightsByAirlineId(Int64 id);
+        IList<Flight> GetFlightsByOldDate();
+        void AddToOld_Flights(IList<Flight> flightsToAdd);
+        void RemoveListOfFlights(IList<Flight> flightToRemove);
+
+
 
     }
 }

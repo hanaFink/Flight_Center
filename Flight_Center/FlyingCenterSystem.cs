@@ -9,26 +9,47 @@ namespace Flight_Center
 {
     public class FlyingCenterSystem
     {
-        private static readonly FlyingCenterSystem instance = new FlyingCenterSystem();
-  
+        private static FlyingCenterSystem _instance;
+        private static object key = new object();
+        public static IFlightDAO _flightDAO;
+        public static ITicketDAO _ticketDAO;
         static FlyingCenterSystem()
         {
         }
+
         private FlyingCenterSystem()
         {
+            _flightDAO = new FlightDAOMSSQL();
+            _ticketDAO = new TicketDaoMSSQL();
+             
             while (true)
             {
                 TimeSpan interval = new TimeSpan(24, 0, 0);
                 Thread.Sleep(interval);
+               IList <Flight> listOfFlights = _flightDAO.GetFlightsByOldDate();
+                _flightDAO.AddToOld_Flights(listOfFlights);
+                _flightDAO.RemoveListOfFlights(listOfFlights);
+                IList<Ticket> listOfTickets = _ticketDAO.GetTicketsByFlightId(listOfFlights);
+                _ticketDAO.AddToOldTickets(listOfTickets);
+                _ticketDAO.RemoveListOfTickets(listOfTickets);
+
             }
             
         }
-        public static FlyingCenterSystem Instance
+        public static FlyingCenterSystem GetInstance()
         {
-            get
+            if (_instance == null)
             {
-                return instance;
+                lock(key)
+                {
+                    if (_instance == null)
+                        _instance = new FlyingCenterSystem();
+                }
+               
             }
+           
+                return _instance;
+
         }
       /*  public static T GetFacade <T> (string username, string password)
         {

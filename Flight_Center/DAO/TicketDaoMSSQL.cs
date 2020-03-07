@@ -216,7 +216,7 @@ namespace Flight_Center
         /// get list of tickets and removing them from Tickets table
         /// </summary>
         /// <param name="ticketsToRemove">list of tickets</param>
-        public void Remove(IList<Ticket> ticketsToRemove)
+        public void RemoveListOfTickets(IList<Ticket> ticketsToRemove)
         {
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {

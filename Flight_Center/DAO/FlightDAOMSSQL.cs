@@ -407,15 +407,19 @@ namespace Flight_Center
         /// </summary>
         /// <param name="landingTime"></param>
         /// <returns>list of flights</returns>
-        public IList<Flight> GetFlightsByLandingTime(DateTime landingTime)
+        public IList<Flight> GetFlightsByOldDate()
         {
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {
                 con.Open();
 
                 IList<Flight> ListOfFlightsByLandingTime = new List<Flight>();
+                DateTime date = DateTime.Now;
+                Convert.ToInt32(date.Hour);
+                int date1 = Convert.ToInt32(date.Hour) -3;
+                
 
-                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM Flights where (select DATEPART(HOUR, LANDING_TIME) hour) > {(int)landingTime.Hour}"))
+                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM Flights where (select DATEPART(HOUR,LANDING_TIME ) hour) <{date1}"))
                 {
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
