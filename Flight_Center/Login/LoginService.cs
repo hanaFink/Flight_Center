@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center
 {
-    class LoginService : ILogicService
+    public class LoginService : ILogicService
     {
         private IAirlineDAO _airlineDAO;
         private ICustomerDAO _customerADO;

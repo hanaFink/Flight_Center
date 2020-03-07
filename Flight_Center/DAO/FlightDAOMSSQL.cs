@@ -376,11 +376,11 @@ namespace Flight_Center
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {
 
-                Flight getFlight = new Flight();
+                
                 con.Open();
            
 
-                            using (SqlCommand cmd1 = new SqlCommand($"DELETE FROM Flights WHERE ID = {getFlight.ID}", con))
+                            using (SqlCommand cmd1 = new SqlCommand($"DELETE FROM Flights WHERE ID = {flightToRemove.ID}", con))
                 {
                     cmd1.ExecuteNonQuery();
 
@@ -402,9 +402,97 @@ namespace Flight_Center
                 }
             }
         }
+        /// <summary>
+        /// select all flights whith landing time over 3 hours from now 
+        /// </summary>
+        /// <param name="landingTime"></param>
+        /// <returns>list of flights</returns>
+        public IList<Flight> GetFlightsByLandingTime(DateTime landingTime)
+        {
+            using (SqlConnection con = new SqlConnection(_path)) // Connection String
+            {
+                con.Open();
 
-        public void 
- 
-       
+                IList<Flight> ListOfFlightsByLandingTime = new List<Flight>();
+
+                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM Flights where (select DATEPART(HOUR, LANDING_TIME) hour) > {(int)landingTime.Hour}"))
+                {
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        Flight getFlight = new Flight();
+
+                        while (reader.Read())
+                        {
+
+                            getFlight.ID = Convert.ToInt32(reader["ID"]);
+                            getFlight.AIRLINECOMPANY_ID = Convert.ToInt32(reader["AIRLINECOMPANY_ID"]);
+                            getFlight.ORIGIN_COUNTRY_CODE = Convert.ToInt32(reader["ORIGIN_COUNTRY_CODE"]);
+                            getFlight.DESTINATION_COUNTRY_CODE = Convert.ToInt32(reader["DESTINATION_COUNTRY_CODE"]);
+                            getFlight.LANDING_TIME = Convert.ToDateTime(reader["LANDING_TIME"]);
+                            getFlight.ACTUAL_LANDING_TIME = Convert.ToDateTime(reader["ACTUAL_LANDING_TIME"]);
+                            getFlight.DEPARTURE_TIME = Convert.ToDateTime(reader["DEPARTURE_TIME"]);
+                            getFlight.ACTUAL_DEPARTURE_TIME = Convert.ToDateTime(reader["ACTUAL_DEPARTURE_TIME"]);
+                            getFlight.REMAINING_TICKETS = Convert.ToInt32(reader["REMAINING_TICKETS"]);
+
+
+                        }
+                        ListOfFlightsByLandingTime.Add(getFlight);
+                    }
+                }
+
+                return ListOfFlightsByLandingTime;
+            }
+        }
+     /// <summary>
+     /// Adding list of flights to Old_Flights tabe
+     /// </summary>
+     /// <param name="flightsToAdd">list of flights</param>
+            public void AddToOld_Flights(IList<Flight> flightsToAdd)
+            {
+
+
+            using (SqlConnection con = new SqlConnection(_path)) // Connection String
+            {
+                con.Open();
+                foreach (Flight flightToAdd in flightsToAdd)
+                {
+
+
+                    using (SqlCommand cmd = new SqlCommand($"INSERT INTO Old_Flights VALUES ({flightToAdd.AIRLINECOMPANY_ID},{flightToAdd.ORIGIN_COUNTRY_CODE},{flightToAdd.DESTINATION_COUNTRY_CODE},{flightToAdd.DEPARTURE_TIME},{flightToAdd.ACTUAL_DEPARTURE_TIME},{flightToAdd.LANDING_TIME},{flightToAdd.ACTUAL_LANDING_TIME},{flightToAdd.REMAINING_TICKETS}", con))
+                    {
+
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+            }
+                
+            }
+        /// <summary>
+        /// Removing list of flights from Flight table
+        /// </summary>
+        /// <param name="flightToRemove">list of flights</param>
+        public void RemoveListOfFlights(IList<Flight> flightToRemove)
+        {
+
+            using (SqlConnection con = new SqlConnection(_path)) // Connection String
+            {
+
+                con.Open();
+                foreach (Flight getFlight in flightToRemove)
+                {
+                    using (SqlCommand cmd1 = new SqlCommand($"DELETE FROM Flights WHERE ID = {getFlight.ID}", con))
+                    {
+                        cmd1.ExecuteNonQuery();
+
+                    }
+                }
+            }
+        }
+
+
+
+
     }
-}
+    }

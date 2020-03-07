@@ -58,6 +58,7 @@
     <Compile Include="Facade\NotValidIdExeption.cs" />
     <Compile Include="Facade\NotYourFlightException.cs" />
     <Compile Include="Flight_Center_Appconfig.cs" />
+    <Compile Include="FlyingCenterSystem.cs" />
     <Compile Include="Login\WrongPasswors.cs" />
     <Compile Include="POCO\Administrator.cs" />
     <Compile Include="POCO\AirlineCompanie.cs" />

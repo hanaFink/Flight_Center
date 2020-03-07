@@ -40,10 +40,10 @@ namespace Flight_Center
                         while (reader.Read())
                         {
 
-                            getTicket.ID =Convert.ToInt32(reader["ID"]);
+                            getTicket.ID = Convert.ToInt32(reader["ID"]);
                             getTicket.FLIGHT_ID = Convert.ToInt32(reader["FLIGHT_ID"]);
                             getTicket.CUSTOMER_ID = Convert.ToInt32(reader["CUSTOMER_ID"]);
-                      
+
                         }
 
                         return getTicket;
@@ -58,19 +58,19 @@ namespace Flight_Center
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {
                 con.Open();
-                IList<Ticket> listOfTickets =new List<Ticket>();// create list of tickets
+                IList<Ticket> listOfTickets = new List<Ticket>();// create list of tickets
 
-               
 
-                    using (SqlCommand cmd = new SqlCommand($"SELECT * FROM Tickets ", con))
+
+                using (SqlCommand cmd = new SqlCommand($"SELECT * FROM Tickets ", con))
+                {
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
 
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-                           
 
-                            while (reader.Read())
-                            {
+                        while (reader.Read())
+                        {
                             Ticket ticket = new Ticket
 
                             {
@@ -80,12 +80,12 @@ namespace Flight_Center
                             };
 
 
-                             listOfTickets.Add(ticket);
-                            }
-
-                            
+                            listOfTickets.Add(ticket);
                         }
-                   
+
+
+                    }
+
                 }
                 return listOfTickets;
             }
@@ -163,6 +163,93 @@ namespace Flight_Center
                 return listOfTickets;
             }
         }
+        /// <summary>
+        /// method find list of tickets by list of flights
+        /// </summary>
+        /// <param name="IList<Flight> flights"> list of flights</param>
+        /// <returns>list of tickets</returns>
+        public IList<Ticket> GetTicketsByFlightId(IList<Flight> flights)
+        {
+            using (SqlConnection con = new SqlConnection(_path)) // Connection String
+            {
+                con.Open();
 
+                IList<Ticket> listOfTickets = new List<Ticket>();// create list of tickets
+
+
+                foreach (Flight item in flights)
+                {
+
+
+                    using (SqlCommand cmd = new SqlCommand($"SELECT * FROM Tickets WHERE FLIGHT_ID = {item.ID}", con))
+                    {
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+
+
+                            while (reader.Read())
+                            {
+                                Ticket ticket = new Ticket
+
+                                {
+                                    ID = Convert.ToInt32(reader["ID"]),
+                                    FLIGHT_ID = Convert.ToInt32(reader["FLIGHT_ID"]),
+                                    CUSTOMER_ID = Convert.ToInt32(reader["CUSTOMER_ID"])
+                                };
+
+
+                                listOfTickets.Add(ticket);
+                            }
+
+
+                        }
+
+                    }
+                   
+
+                }
+                return listOfTickets;
+            }
+        }
+        /// <summary>
+        /// get list of tickets and removing them from Tickets table
+        /// </summary>
+        /// <param name="ticketsToRemove">list of tickets</param>
+        public void Remove(IList<Ticket> ticketsToRemove)
+        {
+            using (SqlConnection con = new SqlConnection(_path)) // Connection String
+            {
+                con.Open();
+                foreach (Ticket ticketToRemove in ticketsToRemove)
+                {
+                    
+                    using (SqlCommand cmd = new SqlCommand($"DELETE FROM Tickets WHERE ID = {ticketToRemove.ID}", con))
+                    {
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+            }
+        }
+
+        // methods that move list of tickets to old_tickets table
+        public void AddToOldTickets(IList<Ticket> ticketsToAdd)
+        {
+            using (SqlConnection con = new SqlConnection(_path)) // Connection String
+            {
+                con.Open();
+                foreach (Ticket ticketToAdd in ticketsToAdd)
+                {
+
+
+                    using (SqlCommand cmd = new SqlCommand($"INSERT INTO Old_Tickets VALUES ({ticketToAdd.FLIGHT_ID},{ticketToAdd.CUSTOMER_ID})", con))
+                    {
+                        cmd.ExecuteNonQuery();
+
+                    }
+                }
+            }
+        }
     }
 }
