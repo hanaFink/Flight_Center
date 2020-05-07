@@ -18,10 +18,10 @@ namespace Flight_Center
 
         }
 
-        public Ticket(int iD, int fLIGHT_ID, int cUSTOMER_ID)
+        public Ticket(int iD, int FLIGHT_ID, int cUSTOMER_ID)
         {
             ID = iD;
-            FLIGHT_ID = fLIGHT_ID;
+            this.FLIGHT_ID = FLIGHT_ID;
             CUSTOMER_ID = cUSTOMER_ID;
         }
         public static bool operator ==(Ticket first_member, Ticket second_member)

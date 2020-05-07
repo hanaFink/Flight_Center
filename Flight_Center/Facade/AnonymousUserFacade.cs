@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center
 {
-    class AnonymousUserFacade : FacadeBase, IAnonymousUserFacade//here we will check all errors
+    public class AnonymousUserFacade : FacadeBase, IAnonymousUserFacade//here we will check all errors
     {
         public IList<AirlineCompanie> GetAllAirlineCompanies()
         {

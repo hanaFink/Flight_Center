@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center
 {
-    abstract class FacadeBase
+     public abstract class FacadeBase
     {
         protected IAirlineDAO _airlineDao;
         protected ICountryDAO _countryDao;

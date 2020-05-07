@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeInAction", "SeeInAction\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFlight_Center", "TestFlight_Center\TestFlight_Center.csproj", "{A0B57DC8-EA13-4629-9682-24AD45F797F6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiFlight_Center", "ApiFlight_Center\ApiFlight_Center.csproj", "{711CE032-B4D5-44FA-B3DF-B110E490594C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{A0B57DC8-EA13-4629-9682-24AD45F797F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0B57DC8-EA13-4629-9682-24AD45F797F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0B57DC8-EA13-4629-9682-24AD45F797F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{711CE032-B4D5-44FA-B3DF-B110E490594C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{711CE032-B4D5-44FA-B3DF-B110E490594C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{711CE032-B4D5-44FA-B3DF-B110E490594C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{711CE032-B4D5-44FA-B3DF-B110E490594C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
