@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center.Facade
 {
-    public class LoggedAirlineFacade : AnonymousUserFacade, ILoggedAirlineFacade
+    public class LoggedInAirlineFacade : AnonymousUserFacade, ILoggedAirlineFacade
     {
         public void CancelFlight(LoginToken<AirlineCompanie> token, Flight flight)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center.Facade
 {
-    class LoggedInAdministratorFacade : AnonymousUserFacade, ILoggedInAdministratorFacade
+    public class LoggedInAdministratorFacade : AnonymousUserFacade, ILoggedInAdministratorFacade
     {
         public void CreateNewAirline(LoginToken<Administrator> token, AirlineCompanie airline)
         {

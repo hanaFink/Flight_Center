@@ -8,7 +8,7 @@ namespace Flight_Center
 {
     public interface IFlightDAO:IBasicDB<Flight>
     {
-        Dictionary<Flight, int> GetAllFlithtsVacancy();
+        Dictionary<Flight, int> GetAllFlightsVacancy();
         Flight Get(int id);
         IList<Flight> GetFlightsByOriginCountry(int countryCode);
         IList<Flight> GetFlightsByDistinationCountry(int countryCode);

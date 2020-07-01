@@ -51,7 +51,7 @@ namespace Flight_Center
                 return _instance;
 
         }
-      /*  public static T GetFacade <T> (string username, string password)
+        public static T GetFacade <T> (string username, string password)
         {
 
             
@@ -62,8 +62,8 @@ namespace Flight_Center
 
             if (login.TryAdministratorLogin(username, password, out t) == true)
             {
-               bool a = login.TryAdministratorLogin(username, password, out t)
-                return  ;
+                bool a = login.TryAdministratorLogin(username, password, out t);
+                return true ;
             }
             else if (login.TryAirlineLogin(username, password, out t1) == true)
             {
@@ -74,6 +74,6 @@ namespace Flight_Center
 
             }
 
-        }*/
+        }
     }
 }

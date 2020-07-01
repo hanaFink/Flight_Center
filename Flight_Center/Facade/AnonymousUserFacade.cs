@@ -20,7 +20,7 @@ namespace Flight_Center
 
         public Dictionary<Flight, int> GetAllFlightsVacancy()
         {
-            return _flightDAO.GetAllFlithtsVacancy();
+            return _flightDAO.GetAllFlightsVacancy();
         }
 
         public Flight GetFlightById(int id)

@@ -50,7 +50,7 @@
     <Compile Include="Facade\ILoggedAirlineFacade.cs" />
     <Compile Include="Facade\ILoggedInAdministratorFacade.cs" />
     <Compile Include="Facade\ILoggedInCustomerFacade.cs" />
-    <Compile Include="Facade\LoggedAirlineFacade.cs" />
+    <Compile Include="Facade\LoggedInAirlineFacade.cs" />
     <Compile Include="Facade\LoggedInAdministratorFacade.cs" />
     <Compile Include="Facade\LoggedInCustomerFacade.cs" />
     <Compile Include="Facade\NotCustomerFlightExeption.cs" />

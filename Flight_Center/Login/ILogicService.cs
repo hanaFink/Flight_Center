@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Flight_Center.Facade;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,10 +9,11 @@ namespace Flight_Center
 {
     interface ILogicService
     {
-        bool TryAdministratorLogin(string userName, string password, out LoginToken<Administrator> token);
-        bool TryAirlineLogin(string userName, string password, out LoginToken<AirlineCompanie> token);
+        void TryAdministratorLogin(string userName, string password,out LoggedInAdministratorFacade loggedInAdministratorFacade, out LoginToken<Administrator> token);
 
-        bool TryCustomereLogin(string userName, string password, out LoginToken<Customer> token);
+        void TryAirlineLogin(string userName, string password,out LoggedInAirlineFacade loggedInAirlineFacade,  out LoginToken<AirlineCompanie> token);
+
+        void TryCustomereLogin(string userName, string password,out LoggedInCustomerFacade loggedInCustomerFacade, out LoginToken<Customer> token);
 
 
 

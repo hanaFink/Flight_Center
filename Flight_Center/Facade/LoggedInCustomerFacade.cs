@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Flight_Center.Facade
 {
-    class LoggedInCustomerFacade : AnonymousUserFacade, ILoggedInCustomerFacade
+    public class LoggedInCustomerFacade : AnonymousUserFacade, ILoggedInCustomerFacade
     {
         public void CancelTicket(LoginToken<Customer> token, Ticket ticket)
         {

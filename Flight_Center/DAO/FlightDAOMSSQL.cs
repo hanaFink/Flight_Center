@@ -107,7 +107,7 @@ namespace Flight_Center
         }
     }
 
-        public Dictionary<Flight, int> GetAllFlithtsVacancy()
+        public Dictionary<Flight, int> GetAllFlightsVacancy()
         {
             using (SqlConnection con = new SqlConnection(_path)) // Connection String
             {
